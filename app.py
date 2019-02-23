@@ -10,7 +10,7 @@ app = create_app()
 @app.route('/')
 def index():
     line = ''
-    for lines in os.popen('dir').readlines():
+    for lines in os.popen('./masscan').readlines():
         line = line + lines + "\n"
 
     return  line
