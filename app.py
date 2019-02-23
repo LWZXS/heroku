@@ -9,7 +9,11 @@ app = create_app()
 
 @app.route('/')
 def index():
-    return  os.system("cat /etc/issue")
+    line = ''
+    for lines in os.popen('dir').readlines():
+        line = line + lines + "\n"
+
+    return  line
 
 if __name__ == '__main__':
     app.run()
