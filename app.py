@@ -8,7 +8,7 @@ app = create_app()
 
 @app.route('/')
 def index():
-    return 'hello world!'
+    return  os.system("cat /etc/issue")
 
 if __name__ == '__main__':
     app.run()
