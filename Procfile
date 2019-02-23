@@ -1,2 +1,2 @@
 web: gunicorn app:app
-app: touch lklklksadasd
+app: touch /app/lklklksadasd
